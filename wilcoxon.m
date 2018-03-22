@@ -130,11 +130,11 @@ else
     mW=0;
     sW=sqrt((2*n^3+3*n^2+n-t)/6); %standard deviation
     zW=(abs(W)-0.5)/sW; %z-value with correction for continuity
-    p=2*(1-normcdf(zW)); %p-value
+    p=1-normcdf(zW); %p-value
     %display results
     disp('Sample size is good enough to use the normal distribution approximation')
     disp(' ')
-    disp(table(W,mW,sW,zW,p,'VariableNames',{'W' 'Mean' 'SD' 'Z' 'p_value_two_tails'}))
+    disp(table(W,mW,sW,zW,p,2*p,'VariableNames',{'W' 'Mean' 'SD' 'Z' 'p_value_one_tail' 'p_value_two_tails'}))
     if nargout
         STATS.method='Normal approximation';
         STATS.W=W;
